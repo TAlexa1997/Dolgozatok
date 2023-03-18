@@ -1,36 +1,36 @@
 window.addEventListener("load", init);
 const kutyaLista = [
   {
-    nev: "Teo",
-    fajta: "Bischon Havanese",
-    láb: 4,
-    marmagassága: 52,
-    nem: "kan",
-    kor: 5,
+    Név: "Teo",
+    Fajta: "Bischon Havanese",
+    Láb: 4,
+    Marmagassága: 52,
+    Neme: "kan",
+    Kor: 5,
   },
   {
-    nev: "Bizsu",
-    fajta: "Bischon Havanese",
-    lab: 4,
-    marmagassága: 20,
-    nem: "szuka",
-    kor: "4 hónapos",
+    Név: "Bizsu",
+    Fajta: "Bischon Havanese",
+    Láb: 4,
+    Marmagassága: 20,
+    Neme: "szuka",
+    Kor: "4 hónapos",
   },
   {
-    nev: "Pamacs",
-    fajta: "Shetlandi Juhászkutya",
-    lab: 4,
-    marmagassága: 60,
-    nem: "szuka",
-    kor: 13,
+    Név: "Pamacs",
+    Fajta: "Shetlandi Juhászkutya",
+    Láb: 4,
+    Marmagassága: 60,
+    Neme: "szuka",
+    Kor: 13,
   },
   {
-    nev: "Louis",
-    fajta: "Keverék",
-    lab: 4,
-    marmagassága: 70,
-    nem: "kan",
-    kor: 11,
+    Név: "Louis",
+    Fajta: "Keverék",
+    Láb: 4,
+    Marmagassága: 70,
+    Neme: "kan",
+    Kor: 11,
   },
 ];
 
@@ -61,46 +61,43 @@ function init() {
   let txt = osszeallit();
   // itt helyezzük bele az article elembe
   ARTICLE[0].innerHTML = txt;
+  let txt2 = tabla();
+  ARTICLE[1].innerHTML = txt2;
 }
 
 function osszeallit() {
-  // összállítjuk azt a szöveges tartalmat, amia HTML kódo jelenti
-  // console.log(kulcs,kutyaLista[index][kulcs]);
+  // összállítjuk azt a szöveges tartalmat, ami a HTML kódot jelenti
   let txt = "";
   for (let index = 0; index < kutyaLista.length; index++) {
+    txt += `<div>`;
     for (const kulcs in kutyaLista[index]) {
-      txt += `<div>
-                    <p>
-                        ${(kulcs,kutyaLista[index][kulcs[0]])}
-                    </p>
-                    <p>
-                        ${(kulcs, kutyaLista[index][kulcs[1]])}
-                    </p>
-                    <p>
-                        ${(kulcs, kutyaLista[index][kulcs[2]])}
-                    </p>
-                    <p>
-                        ${(kulcs, kutyaLista[index][kulcs[3]])}
-                    </p>
-                    <p>
-                        ${(kulcs, kutyaLista[index][kulcs[4]])}
-                    </p>
-                    <p>
-                        ${(kulcs, kutyaLista[index][kulcs[5]])}
-                    </p>
-                </div>`;
+      txt += ` <p>
+                        ${kulcs}: ${kutyaLista[index][kulcs]}
+                        </p>`;
     }
+    txt += `</div>`;
   }
-  for (let index = 0; index < kutyaLista.length; index++) {
-    for (const kulcs in kutyaLista[index]) {
-        console.log(kulcs,kutyaLista[index][kulcs]);
-      }
-  }
-  
-  console.log();
   console.log(txt);
   return txt;
+}
 
-  
+function tabla() {
+  let txt2 = "";
+  for (let index = 0; index < kutyaLista.length; index++) {
+    txt2 += `<table>`;
+    for (const kulcs in kutyaLista[index]) {
+      txt2 += ` <tr>
+                            ${kulcs}}
+                            </tr>`;
+      for (const kulcs in kutyaLista[index]) {
+        txt2 += ` <td>
+                            ${kutyaLista[index][kulcs]}
+                            </td>`;
+      }
+    }
+    txt2 += `</table>`;
+  }
+  console.log(txt2);
+  return txt2;
 }
 

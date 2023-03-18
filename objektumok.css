@@ -7,10 +7,13 @@ article{
     grid-template-columns: 33% 33% 33%;
     grid-template-rows: 1fr 1fr;
     align-items: center;
-    text-align: center;
+    padding-left: 10px;
 }
 
-.div{
-    border: 5px solid black;
+div{
+    border: 2px solid black;
+    margin: 10px;
+    padding-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
