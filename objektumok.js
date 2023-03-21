@@ -32,6 +32,22 @@ const kutyaLista = [
     Neme: "kan",
     Kor: 11,
   },
+  {
+    Név: "Bogi",
+    Fajta: "Keverék",
+    Láb: 4,
+    Marmagassága: 50,
+    Neme: "szuka",
+    Kor: 15,
+  },
+  {
+    Név: "Pufi",
+    Fajta: "Keverék",
+    Láb: 4,
+    Marmagassága: 50,
+    Neme: "kan",
+    Kor: 17,
+  },
 ];
 
 /** function init() {
@@ -61,8 +77,9 @@ function init() {
   let txt = osszeallit();
   // itt helyezzük bele az article elembe
   ARTICLE[0].innerHTML = txt;
+  const TABLE = document.querySelectorAll("table");
   let txt2 = tabla();
-  ARTICLE[1].innerHTML = txt2;
+  TABLE[0].innerHTML = txt2;
 }
 
 function osszeallit() {
@@ -72,8 +89,8 @@ function osszeallit() {
     txt += `<div>`;
     for (const kulcs in kutyaLista[index]) {
       txt += ` <p>
-                        ${kulcs}: ${kutyaLista[index][kulcs]}
-                        </p>`;
+                ${kulcs}: ${kutyaLista[index][kulcs]}
+              </p>`;
     }
     txt += `</div>`;
   }
@@ -82,22 +99,19 @@ function osszeallit() {
 }
 
 function tabla() {
-  let txt2 = "";
-  for (let index = 0; index < kutyaLista.length; index++) {
-    txt2 += `<table>`;
-    for (const kulcs in kutyaLista[index]) {
-      txt2 += ` <tr>
-                            ${kulcs}}
-                            </tr>`;
-      for (const kulcs in kutyaLista[index]) {
-        txt2 += ` <td>
-                            ${kutyaLista[index][kulcs]}
-                            </td>`;
-      }
+  let txt2 = "<table><thead>";
+  for (const kulcs in kutyaLista[0]) {
+    txt2 += ` <th>${kulcs}</th>`
     }
-    txt2 += `</table>`;
+
+  for (let index = 0; index < kutyaLista.length; index++) {
+    txt2 += `<tr>${kutyaLista[index].nev}</tr>`;
+    for (const kulcs in kutyaLista[index]) {
+      txt2 += `<td>${kutyaLista[index][kulcs]}</td>`
+    }
   }
-  console.log(txt2);
+  txt2 += "</thead></table>";
+
+  console.table(txt2);
   return txt2;
 }
-
