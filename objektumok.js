@@ -79,7 +79,7 @@ function init() {
   ARTICLE[0].innerHTML = txt;
   const TABLE = document.querySelectorAll("table");
   let txt2 = tabla();
-  TABLE[0].innerHTML = txt2;
+  TABLE[0].innerHTML = txt2,sorrend;
 }
 
 function osszeallit() {
@@ -99,19 +99,46 @@ function osszeallit() {
 }
 
 function tabla() {
-  let txt2 = "<table><thead>";
+  let txt2 = "<table><thead><tr>";
+  
+  let gomb = `<input type="button" id="mybutton" value="Sorrend" onclick ="sorrend(0)" />`
   for (const kulcs in kutyaLista[0]) {
-    txt2 += ` <th>${kulcs}</th>`
-    }
+    txt2 += `<th>${kulcs}<br>${gomb}</th> `;
+  }
+    txt2+= `</thead><tbody>`
 
   for (let index = 0; index < kutyaLista.length; index++) {
-    txt2 += `<tr>${kutyaLista[index].nev}</tr>`;
+    txt2 += `<tr>`;
     for (const kulcs in kutyaLista[index]) {
-      txt2 += `<td>${kutyaLista[index][kulcs]}</td>`
+      txt2 += `<td>${kutyaLista[index][kulcs]}</td>`;
+      console.log(txt2,gomb)
     }
+    txt2+=`</tr>`
   }
-  txt2 += "</thead></table>";
+  txt2 += "</tbody></table>";
 
-  console.table(txt2);
-  return txt2;
+  tablazat = txt2,gomb
+  console.table(tablazat);
+  return tablazat;
+  
 }
+
+function sorrend(n){
+  var table = document.querySelector('table'),
+      thead = document.querySelector('thead'),
+      tbody = document.querySelector('tbody'),
+      csokkeno = [...tbody.rows];
+    tbody.innerHTML = '';
+
+  csokkeno.sort((a,b) =>{
+    let x = a.getElementsByTagName('td')[n].innerHTML.toLowerCase();
+    let y = b.getElementsByTagName('td')[n].innerHTML.toLowerCase();
+    return x < y ? -1 : 1 ;
+  });
+  csokkeno.map ((csokkeno)=>{
+    tbody.appendChild(csokkeno);
+  })
+  
+}
+
+

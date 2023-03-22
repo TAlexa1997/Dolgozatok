@@ -19,4 +19,7 @@ div{
 
 table{
     border: 2px solid black;
+    width: 90%;
+    margin: auto;
+    text-align: center;
 }
