@@ -52,6 +52,9 @@ const kutyaLista = [
 
 
 function init() {
+  const H1 = document.querySelectorAll("h1");
+  let oldal = focim();
+  H1[0].innerHTML = oldal;
   const ARTICLE = document.querySelectorAll("article");
   /** Írjuk ki divekbe és azon belül p tagbe a kutyák fajtáját */
   let txt = osszeallit();
@@ -63,6 +66,11 @@ function init() {
   const FORM = document.querySelectorAll("form");
   let txt3 = urlap();
   FORM[0].innerHTML = txt3;
+}
+
+function focim(){
+  let oldal_nev = "<h1>Milyen kutyám voltak eddig</h1>";
+  return oldal_nev;
 }
 
 function osszeallit() {
@@ -136,25 +144,6 @@ function sortTable(kulcs, novekvo) {
     }
   }
 }
-/** 
-function urlap() {
-  let txt3 = "<form>";
-  txt3 = "<label for='nev'>Kutya neve</label><br>";
-  txt3 = "<input type='text' id='nev' name='nev'></input>";
-  txt3 = "<label for='fajta'>Kutya fajtája</label><br>";
-  txt3 = "<input type='text' id='fajta' name='fajta'></input>";
-  txt3 = "<label for='labakszama'>Kutya lábának száma</label><br>";
-  txt3 = "<input type='number' id='labakszama' name='labakszama'></input>";
-  txt3 = "<label for='magassag'>Kutya marmagassága</label><br>";
-  txt3 = "<input type='number' id='magassag' name='magassag'></input>";
-  txt3 = "<label for='neme'>Kutya neme</label><br>";
-  txt3 = "<input type='text' id='neme' name='neme'></input>";
-  txt3 = "<label for='kor'>Kutya kora</label><br>";
-  txt3 = "<input type='number' id='kor' name='kor'></input>";
-  txt3 = "</form>";
-  return txt3;
-}
-*/
 
 function urlap() {
   let txt3 = "<form>";
@@ -172,20 +161,3 @@ function urlap() {
   return txt3;
 }
 
-
-
-
-/** 
-let txt = "";
-  for (let index = 0; index < kutyaLista.length; index++) {
-    txt += `<div>`;
-    for (const kulcs in kutyaLista[index]) {
-      txt += ` <p>
-                ${kulcs}: ${kutyaLista[index][kulcs]}
-              </p>`;
-    }
-    txt += `</div>`;
-  }
-  console.log(txt);
-  return txt;
-  */
