@@ -50,26 +50,6 @@ const kutyaLista = [
   },
 ];
 
-/** function init() {
-  const kutyaLista = [
-    "foxterrier",
-    "kuvasz",
-    "puli",
-    "agár",
-    "újfullandi",
-    "keverék",
-  ];
-  const ART = document.querySelector("article");
-  ART.innerHTML = "<button> Kutya <button>";
-  const gomb = document.querySelector("button");
-  gomb.addEventListener("click", function () {
-    megnyom(ART, kutyaLista);
-  });
-}
-
-function megnyom(ART, kutyaLista) {
-  ART.innerHTML += kutyaLista[2];
-} */
 
 function init() {
   const ARTICLE = document.querySelectorAll("article");
@@ -80,6 +60,9 @@ function init() {
   const TABLE = document.querySelectorAll("table");
   let txt2 = tabla();
   TABLE[0].innerHTML = txt2;
+  const FORM = document.querySelectorAll("form");
+  let txt3 = urlap();
+  FORM[0].innerHTML = txt3;
 }
 
 function osszeallit() {
@@ -153,3 +136,56 @@ function sortTable(kulcs, novekvo) {
     }
   }
 }
+/** 
+function urlap() {
+  let txt3 = "<form>";
+  txt3 = "<label for='nev'>Kutya neve</label><br>";
+  txt3 = "<input type='text' id='nev' name='nev'></input>";
+  txt3 = "<label for='fajta'>Kutya fajtája</label><br>";
+  txt3 = "<input type='text' id='fajta' name='fajta'></input>";
+  txt3 = "<label for='labakszama'>Kutya lábának száma</label><br>";
+  txt3 = "<input type='number' id='labakszama' name='labakszama'></input>";
+  txt3 = "<label for='magassag'>Kutya marmagassága</label><br>";
+  txt3 = "<input type='number' id='magassag' name='magassag'></input>";
+  txt3 = "<label for='neme'>Kutya neme</label><br>";
+  txt3 = "<input type='text' id='neme' name='neme'></input>";
+  txt3 = "<label for='kor'>Kutya kora</label><br>";
+  txt3 = "<input type='number' id='kor' name='kor'></input>";
+  txt3 = "</form>";
+  return txt3;
+}
+*/
+
+function urlap() {
+  let txt3 = "<form>";
+  for (const kulcs in kutyaLista[0]) {
+    txt3 += `<th>${kulcs}</th>`;
+    if (typeof kutyaLista[0][kulcs] === "number") {
+      txt3 += "<input type='number' id='"+kulcs+"' name='"+kulcs+"'></input><br>";
+    } else {
+      txt3 += "<input type='text' id='"+kulcs+"' name='"+kulcs+"'></input><br>";
+    }
+  }
+  txt3 += "<input type='submit' value='Submit' onclick='tabla()'></input>";
+  txt3 += "</form>";
+  console.log(txt3);
+  return txt3;
+}
+
+
+
+
+/** 
+let txt = "";
+  for (let index = 0; index < kutyaLista.length; index++) {
+    txt += `<div>`;
+    for (const kulcs in kutyaLista[index]) {
+      txt += ` <p>
+                ${kulcs}: ${kutyaLista[index][kulcs]}
+              </p>`;
+    }
+    txt += `</div>`;
+  }
+  console.log(txt);
+  return txt;
+  */
